@@ -1,0 +1,17 @@
+type Homeworld {
+  name: String @examples(values: ["Tatooine", "Naboo", "Alderaan", "Eriadu", "Yavin IV", "Endor", "Coruscant", "unknown"])
+  species: [Specie!]
+}
+
+type Specie {
+  designation: String @examples(values:["sentient", "reptilian", "human", "droid"])
+  language: String @examples(values:["Gungan basic", "Toydarian", "Neimoidia", "Galactic basic"])
+  subEspecies: [Specie!]
+  homeworld: Homeworld
+}
+
+type Query {
+  species(id: ID): Specie
+  homeworld(id: ID): Homeworld
+  allHomeworlds: [Homeworld!]
+}
